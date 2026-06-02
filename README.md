@@ -1,4 +1,4 @@
-<img width="1415" height="1161" alt="image" src="https://github.com/user-attachments/assets/b6211808-2b12-4b2d-bceb-ce6374d4d06a" />
+<img width="1410" height="1153" alt="image" src="https://github.com/user-attachments/assets/08a5487d-1ef3-479f-a0ee-cbe794276099" />
 
 
 # WLED SimHub Plugin
