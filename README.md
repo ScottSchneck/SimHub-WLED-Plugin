@@ -1,3 +1,6 @@
+<img width="1415" height="1161" alt="image" src="https://github.com/user-attachments/assets/b6211808-2b12-4b2d-bceb-ce6374d4d06a" />
+
+
 # WLED SimHub Plugin
 
 A [SimHub](https://www.simhubdash.com/) plugin that drives [WLED](https://kno.wled.ge/)-powered LED strips using real-time simracing telemetry. Define formula-based rules that trigger animations on your LED hardware when in-game conditions are met — pit lane speed limiter active, RPM in the redline, tyre temp critical, and so on.
