@@ -1,0 +1,89 @@
+﻿<Window x:Class="WledSimHubPlugin.ProfileManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WLED Fleet Profile Manager" Height="500" Width="600" 
+        Background="#121212" Foreground="#F3F3F3" FontFamily="Segoe UI" WindowStartupLocation="CenterOwner">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#1DD383"/>
+            <Setter Property="Foreground" Value="#000"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bg" Background="{TemplateBinding Background}" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#2BEA98"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Manage Profiles" FontSize="20" FontWeight="Bold" Margin="0,0,0,16"/>
+
+        <ListBox x:Name="ProfileList" Grid.Row="1" ItemsSource="{Binding Profiles}" Background="#1E1E1E" BorderBrush="#252525" BorderThickness="1">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="8"/>
+                    <Setter Property="Margin" Value="0,0,0,4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border x:Name="bd" Background="Transparent" BorderBrush="#333" BorderThickness="0,0,0,1">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="bd" Property="Background" Value="#331DD383"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding ProfileName}" FontWeight="Bold" FontSize="14"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                <TextBlock Text="Game: " Foreground="#A0A0A0"/>
+                                <TextBlock Text="{Binding Game}" Margin="0,0,12,0"/>
+                                <TextBlock Text="Rules Configured: " Foreground="#A0A0A0"/>
+                                <TextBlock Text="{Binding TotalRuleCount}" Foreground="#1DD383" FontWeight="Bold"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <Button Grid.Column="1" Content="Delete" Background="Transparent" Foreground="#CF6679" Click="DeleteProfile_Click" VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button Content="Set as Active" Click="SetActive_Click" Margin="0,0,8,0"/>
+            <Button Content="Close" Click="Close_Click" Background="#333" Foreground="#FFF"/>
+        </StackPanel>
+    </Grid>
+</Window>
